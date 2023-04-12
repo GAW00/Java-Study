@@ -30,7 +30,6 @@ public class lv1_SmallSizeSubString {
         			answer++;
         		}
         	}
-        	
         }
         return answer;
     }
