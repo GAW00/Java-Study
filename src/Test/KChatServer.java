@@ -23,6 +23,7 @@ public class KChatServer {
 	}
 	public int numChatters(){ return vhandler.size(); } // 현재 몇명?
 	public static void main(String[] args) throws IOException{
+		System.out.println(args.length);
 		if(args.length != 1)
 			throw new RuntimeException("Syntax: KChatServer port");
 		new KChatServer(Integer.parseInt(args[0]));
