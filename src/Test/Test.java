@@ -146,17 +146,24 @@ public class Test {
 ////	                .toArray();
 //	    
 //	    System.out.println(Arrays.toString(arr1));
-		String str="this-string-=includes=delims";
-		StringTokenizer stk=new StringTokenizer(str,"-=",true);
-		System.out.println(str);
-		System.out.println();
-			
-		System.out.println("total tokens:"+stk.countTokens());
-		System.out.println("================tokens==================");
-		while(stk.hasMoreTokens()){
-			System.out.println(stk.nextToken());
-		}
-		System.out.println("total tokens:"+stk.countTokens());
+		
+		
+//		String str="this-string-=includes=delims";
+//		StringTokenizer stk=new StringTokenizer(str,"-=",true);
+//		System.out.println(str);
+//		System.out.println();
+//			
+//		System.out.println("total tokens:"+stk.countTokens());
+//		System.out.println("================tokens==================");
+//		while(stk.hasMoreTokens()){
+//			System.out.println(stk.nextToken());
+//		}
+//		System.out.println("total tokens:"+stk.countTokens());
+		
+		
+		System.out.println(Math.round(66.6666 * 100) / 100.00);
+		System.out.println(Math.round(66.6666 * 100) / 100.0);
+		System.out.println(Math.round(66 * 100) / 100);
 	}
 }
 	
