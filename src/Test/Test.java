@@ -161,9 +161,10 @@ public class Test {
 //		System.out.println("total tokens:"+stk.countTokens());
 		
 		
-		System.out.println(Math.round(66.6666 * 100) / 100.00);
-		System.out.println(Math.round(66.6666 * 100) / 100.0);
-		System.out.println(Math.round(66 * 100) / 100);
+//		System.out.println(Math.round(66.6666 * 100) / 100.00);
+//		System.out.println(Math.round(66.6666 * 100) / 100.0);
+//		System.out.println(Math.round(66 * 100) / 100);
+		
 	}
 }
 	
