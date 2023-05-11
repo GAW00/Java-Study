@@ -7,7 +7,6 @@ public class Nine_to_One {
 				System.out.print(i);
 			}
 			System.out.println();
-			
 		}
 	}
 }
