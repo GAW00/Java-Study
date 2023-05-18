@@ -11,6 +11,7 @@ public class Soccer {
 	boolean timeout, goal;
 	int clock;
 	int Pscore=0,Qscore=0;
+	JPanel pan;
 	
 	public static void main(String[] args) {
 		Soccer game = new Soccer();
@@ -18,20 +19,19 @@ public class Soccer {
 	}
 	
 	Soccer(){
-		field=new JField(640/2,480/2,this); // 운동장의 크기
+		field=new JField(640/2, 480/2, this); // 운동장의 크기
 		ball=new Ball(field);
 		p=new Player("손흥민","토트넘 홋스퍼 FC",field,-50,10);
-		q=new Player("이강인","발렌시아 CF",field,50,10);
-		JPanel pan = new JPanel(null);
+		q=new Player("이강인"," RCD 마요르카",field,50,10);
+		pan = new JPanel(null);
 		pan.setBackground(Color.WHITE);
 		pan.add(field);
 		field.setLocation(20,10);
 		
-		JFrame f = new JFrame("핵심J: Soccer Graphical");
+		JFrame f = new JFrame("Soccer");
 		f.getContentPane().add(pan);
 		f.setSize(320+56,240+60);
 		f.setVisible(true); //f.setResizable(false);
-		start();
 	}
 	void start() {
 		System.out.println(" * START! * ");
@@ -81,12 +81,12 @@ public class Soccer {
 		clock=0;
 		while(!timeout) {
 			clock++; System.out.print("["+clock+"]");
-			int dist=p.move(ball); // 선수들은 공 쪽으로 달려간다
+			int dist=p.move(ball); // 선수들은 공 쪽으로 이동
 			int distq=q.move(ball);
 			r=p;
-			if(distq<dist) {r=q;dist=distq;} //더 가까운 선수가 공을 찬다
+			if(distq<dist) {r=q;dist=distq;} //더 가까운 선수가 공을 참
 			if(dist<5) {
-				r.kick(ball); // 5ft 이내면 공을 찬다
+				r.kick(ball); // 5 이내면 공을 찬다
 				System.out.print(" -> "+r.name+" kicks! -> ");
 			}
 			goal=ball.move();
@@ -98,12 +98,19 @@ public class Soccer {
 					Pscore++;
 				System.out.print(" * "+Pscore+":"+Qscore+" * \n");
 				field=new JField(640/2,480/2,this);
+				pan.add(field);
+				field.setLocation(20,10);
 				ball=new Ball(field); // 골넣었으니까 공위치 초기화, 선수위치 초기화
 				p=new Player("손흥민","토트넘 홋스퍼 FC",field,-50,10);
-				q=new Player("이강인","발렌시아 CF",field,50,10);
+				q=new Player("이강인"," RCD 마요르카",field,50,10);
 			}
 			
-			field.repaint(); // show();
+			
+//			show();
+//			field.revalidate();
+			field.repaint();
+			
+			
 			try {Thread.sleep(100);}catch(Exception e) {} // 경기 속도를 조절하는 문장
 			if(clock>90) {
 				stop(); // 90분이 넘어가면 경기 종료
@@ -196,11 +203,11 @@ class Ball{
 	JField f;
 	int x,y;
 	double vx,vy;
-	Ball(JField f){x=0;vx=0;y=0;this.f=f;} // 생성자, this 는 "나"를 가리킴
+	Ball(JField f){x=0;vx=0;y=0;this.f=f;}
 	boolean move() {
 		x+=(int)vx; y+=(int)vy;
 		System.out.println(" 공("+x+","+y+").");
-		vx=vx*0.8; vy=vy*0.8; // 마찰로 감속*비율
+		vx=vx*0.8; vy=vy*0.8; // 감속 비율
 		return(x>f.getRight()-1||x<f.getLeft()+1); // 골인 판별위한 경기장 모서리의 x좌표와 공위치 비교, -1과 +1은 공의 크기를 상정한것
 	}
 	void fly(double kx,double ky) {vx+=kx;vy+=ky;}
