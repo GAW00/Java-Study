@@ -6,8 +6,6 @@ import java.util.Scanner;
 public class T_hashmap {
 	public static void main(String[] args) {
 		init();
-		search_Word(set_Dic());
-		
 	}
 	public static HashMap<String, String> set_Dic() {
 		HashMap<String, String> dictionary = new HashMap<>();
@@ -20,6 +18,7 @@ public class T_hashmap {
 	}
 	public static void init() {
 		System.out.println("한영 단어 검색 프로그램 입니다.");
+		search_Word(set_Dic());
 	}
 	public static void search_Word(HashMap dic) {
 		while(true) {
